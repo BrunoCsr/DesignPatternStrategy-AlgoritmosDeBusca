@@ -1,9 +1,8 @@
 import designPatter.strategy.c214.BubbleSortC;
 import org.junit.Assert;
-import org.junit.Assert.*;
 import org.junit.Test;
 
-public class BubbleSortTest {
+public class BubbleSortCTest {
 
     @Test
     public void sortTest() {
@@ -18,23 +17,42 @@ public class BubbleSortTest {
 
         //ASSERT
         Assert.assertArrayEquals(orderedN, n2);//expected --> actual
-
     }
 
     @Test
-    public void sortTestWithNegativeNUmbers() {
+    public void sortTestWithNegativeNumbers() {
 
         int[] n = {-2, 3, -60, 400, -1, 0};
         int[] orderedN = {-60, -2, -1, 0, 3, 400};
         int[] n2 = {};
-
         BubbleSortC bubbleSortC = new BubbleSortC();
 
         n2 = bubbleSortC.sort(n);
 
         Assert.assertArrayEquals(orderedN, n2);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void whenNullPointerExceptionThrown_thenExpectationSatisfied() {
+        int[] n2 = {};
+        BubbleSortC bubbleSortC = new BubbleSortC();
+
+        n2 = bubbleSortC.sort(null);
+    }
+
+
+    @Test
+    public void sortArrayLengthLesserThanOrEqualToZeroTest() {
+        int[] n = {};
+        int[] n2 = {};
+        BubbleSortC bubbleSortC = new BubbleSortC();
+        n2 = bubbleSortC.sort(n);
+
+        Assert.assertEquals(1, n2.length);
+        Assert.assertEquals(0, n2[0]);
 
 
     }
+
 
 }
